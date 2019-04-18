@@ -6,22 +6,22 @@ import matplotlib.pyplot as plt
 
 def main():
 
-	# TODO 封装成函数
+	
 	if len(sys.argv)<2:
-		print("请输入项路径")
+		print("please input project path")
 		return
 	dir = sys.argv[1]
 	if not os.path.exists(dir):
-		print("路径不存在")
+		print("path not exist")
 		return
 	if not os.path.exists(dir+"/.git"):
-		print("该路径下不是git项目")
+		print("path not git project")
 		return
 
-	## 首先切换到git下
+	
 	os.chdir(dir)
 
-	# 调用git log 拿到所有的git日志
+	
 	os.system("git log > log.txt")
 
 	times = []
@@ -29,10 +29,10 @@ def main():
 	weeks = []
 	weeksCount = [0] * 7
 
-	# 拿到提交的时间戳
-	with open(dir+"\\log.txt", encoding= "UTF-8") as log:
+	
+	with open(dir+"log.txt") as log: # 
 		while True:
-			# 每行读取
+			
 			line = log.readline()
 			if line == "":
 				break
@@ -43,10 +43,10 @@ def main():
 				times.append(time)
 				weeks.append(week)
 
-	# 删除git log的文件
-	os.remove(dir+"\\log.txt")
+	
+	os.remove(dir+"log.txt")
 
-	# TODO 封装成函数
+	
 	for i in range (0,len(times)):
 			time = int(times[i][0:2])
 			count = timeCount[time]
@@ -71,7 +71,7 @@ def main():
 		else:
 			print("not found")
 
-	# TODO 封装成函数
+
 	plt.subplot(1,2,1)
 	plt.bar(range(len(timeCount)),timeCount)
 	plt.xlabel("commit time")
@@ -79,9 +79,10 @@ def main():
 	plt.xticks(np.arange(0,24,1))
 
 	plt.subplot(1,2,2)
-	plt.bar(["mon","tues","wed","thurs","fri","sat","sun"],weeksCount)
+	plt.bar(range(7), weeksCount)
 	plt.xlabel("commit weekday")
 	plt.ylabel("commit count")
+	plt.xticks(range(7),["mon","tues","wed","thurs","fri","sat","sun"],	)
 	plt.show()
 
 if __name__ == '__main__':
