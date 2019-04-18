@@ -82,7 +82,7 @@ def main():
 	plt.bar(range(7), weeksCount)
 	plt.xlabel("commit weekday")
 	plt.ylabel("commit count")
-	plt.xticks(range(7),["mon","tues","wed","thurs","fri","sat","sun"],	)
+	plt.xticks(range(7),["mon","tues","wed","thurs","fri","sat","sun"])
 	plt.show()
 
 if __name__ == '__main__':
