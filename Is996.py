@@ -1,7 +1,6 @@
 import sys
 import os
 import re
-import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
@@ -77,7 +76,7 @@ def main():
 	plt.bar(range(len(timeCount)),timeCount)
 	plt.xlabel("commit time")
 	plt.ylabel("commit count")
-	plt.xticks(np.arange(0,24,1))
+	plt.xticks(range(24))
 
 	plt.subplot(1,2,2)
 	plt.bar(range(7), weeksCount)
