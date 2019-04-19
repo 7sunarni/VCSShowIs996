@@ -21,7 +21,8 @@ def main():
 	
 	os.chdir(dir)
 
-	
+	logFile = os.path.join(dir, "log.txt")
+
 	os.system("git log > log.txt")
 
 	times = []
@@ -30,7 +31,7 @@ def main():
 	weeksCount = [0] * 7
 
 	
-	with open(dir+"log.txt") as log: # 
+	with open(logFile) as log: # 
 		while True:
 			
 			line = log.readline()
@@ -44,7 +45,7 @@ def main():
 				weeks.append(week)
 
 	
-	os.remove(dir+"log.txt")
+	os.remove(logFile)
 
 	
 	for i in range (0,len(times)):
